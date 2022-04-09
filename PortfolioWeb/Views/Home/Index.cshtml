@@ -1,0 +1,152 @@
+﻿
+
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model IEnumerable<Project>
+<html>
+<head>
+    <title>Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="/home/index">Portfolio</a></h1>
+         
+        </header>
+
+        <!-- Banner -->
+        
+        <section id="banner">
+            <div class="outter">
+                <h2>This is my Portfolio</h2>
+            </div>
+        </section>
+      
+        <section id="wrapper">
+           
+            <!-- E para -->
+            <section id="one" class="wrapper spotlight style1">
+                <div class="inner">
+                    <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+                    <div class="content">
+                        <h2 class="major">About Me</h2>
+                        <p>My name is Flamur, I am 19. I am a student in UBT for Computer Science. I am working hard to be a great programmer so i can get rich and be relevant in this world. </p>
+                      
+                    </div>
+                </div>
+            </section>
+
+            <!-- E dyta -->
+            <section id="two" class="wrapper alt spotlight style2">
+                <div class="inner">
+                    <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+                    <div class="content">
+                        <h2 class="major">Before</h2>
+                        <p>I come from a small town called Klina, my father had an ISP Company there so i had to work for like 4 years. Thats when i found out that i like computers and having knowledge for something that other people dont know.</p>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <!-- e treta -->
+            <section id="three" class="wrapper spotlight style3">
+                <div class="inner">
+                    <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+                    <div class="content">
+                        <h2 class="major">Experience</h2>
+                        <p>I dont have any experience in working as a programmer, but i finished 2 training courses for Java at BaffWorks. I also learned C# and .Net Core. I'm really looking forward to work here, so guys give me a chance so i can learn even more and be great for you too. </p>
+                       
+                    </div>
+                </div>
+            </section>
+
+            <!-- e katerta -->
+            <section id="four" class="wrapper alt style1">
+                <div class="inner">
+                    <h2 class="major">Projects</h2>
+                    <p></p>
+                     <section class="features">
+                        @if(Model!=null){
+                        @foreach (var obj in Model) 
+                        {
+                        <article>
+                            <a href="#" class="image"><img src="@obj.ImgName" alt="" /></a>
+                            <h3 class="major"></h3>
+                            <p>@obj.Description</p>
+                            
+                        </article>
+                        }}
+                    </section>
+                    <ul class="actions">
+                        
+                    </ul>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- footer -->
+        <section id="footer">
+            <div class="inner">
+                <h2 class="major">Get in touch</h2>
+                <p></p>
+                <form method="post" asp-controller="Home" asp-action="Index" enctype="multipart/form-data">
+                    <div class="fields">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" name="PersonName" id="name" />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="Email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="Message" id="message" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Send" /></li>
+                    </ul>
+                    <span style="color:green">@ViewBag.Message</span>
+                </form>
+       
+  
+            </div>
+        </section>
+
+    </div>
+
+    <!-- skriptat -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    @section Scripts{
+<script>
+  async function getMyData() {
+    let url = '/ContactController/GetMyData';
+    try {
+        let res = await fetch(url);
+        return await res.json();
+        console.log(res.json);
+    } catch (error) {
+        console.log(error);
+    }
+
+   
+  </script>
+  }
+</body>
+</html>
