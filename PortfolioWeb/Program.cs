@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ProjectDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -20,7 +21,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseDefaultFiles();
 app.UseStaticFiles();
-
+//app.UseCors();
 app.UseRouting();
 
 app.UseAuthorization();

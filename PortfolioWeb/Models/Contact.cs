@@ -1,5 +1,9 @@
-﻿namespace PortfolioWeb.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace PortfolioWeb.Models
 {
+
+    [Keyless]
     public class Contact
     {
         public string Address { get; set; }

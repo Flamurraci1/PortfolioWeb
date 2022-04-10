@@ -13,6 +13,7 @@ namespace PortfolioWeb.Data
         }
 
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
     }
 }
